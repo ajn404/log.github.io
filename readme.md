@@ -1,44 +1,149 @@
-该文件src\pages\sharepoint\editor\components\ComponentEditor.js下
+![image-20201221144036833](全屏bug.assets/image-20201221144036833.png)
 
-912行：getComponentTitleProperty函数
+全屏bug
 
-规定如果选择表格展示为gauge(仪表盘)，Control组件的placeholder就设置为"请输入组件标题"
+http://jira.thingworks.cn:8080/browse/BAU-656?workflowName=Software+Simplified+Workflow+for+Project+ZK&stepId=1
 
-![image-20201214153056151](bugs.assets/image-20201214153056151.png)
+似乎：
 
-**把其中定义placeholder一行改为**
+***.进入全屏的元素，将脱离其父元素***
 
-```js
-  // const placeholder = ChartType.isGauge(display) ? '请输入标题' : sheet.name;
-    const placeholder = sheet.name;
+# isFullScreen:true时
+
+**会有两个trelloComponent组件**
+
+![image-20201221153038741](全屏bug.assets/image-20201221153038741.png)
+
+
+
+
+
+第一个board
+
+![image-20201221153259486](全屏bug.assets/image-20201221153259486.png)
+
+第二个board
+
+![image-20201221153329313](全屏bug.assets/image-20201221153329313.png)
+
+第一个trelloComponent
+
+![image-20201221154255234](全屏bug.assets/image-20201221154255234.png)
+
+第二个trelloComponent
+
+![image-20201221154330757](全屏bug.assets/image-20201221154330757.png)
+
+想法是：
+
+在isfullscreen:true时只渲染全屏的board,不渲染第一个board或者trelloComponent
+
+然而这样不行，两个相同组件都是同时渲染的，无法区分
+
+之后简单通过width区分把第一个去掉
+
+可以去隐藏，但是结果没变**，BUG依然还在**
+
+
+
+继续深入组件
+
+全屏
+
+![image-20201221173539529](全屏bug.assets/image-20201221173539529.png)
+
+未全屏
+
+![image-20201221173654500](全屏bug.assets/image-20201221173654500.png)
+
+不行不行
+
+先理一下思路
+
+draggable上下拖动的时候，其他的draggables不让开
+
+两个
+
+board
+
+```json
+{
+ c "t": "ƒ () {}",
+  "components": {
+    "GlobalStyle": "{$$typeof: Symbol(react.memo), compare: null, type:…}",
+    "BoardWrapper": "{$$typeof: Symbol(react.forward_ref), attrs: Array(…}",
+    "Loader": "ƒ Loader() {}",
+    "ScrollableLane": "{$$typeof: Symbol(react.forward_ref), attrs: Array(…}",
+    "LaneHeader": "ƒ () {}",
+    "LaneFooter": "ƒ _default() {}",
+    "Section": "{$$typeof: Symbol(react.forward_ref), attrs: Array(…}",
+    "NewLaneForm": "ƒ NewLane() {}",
+    "NewLaneSection": "ƒ _default() {}",
+    "NewCardForm": "ƒ NewCardForm() {}",
+    "Card": "ƒ () {}",
+    "AddCardLink": "ƒ _default() {}"
+  },
+  "data": {
+    "lanes": "[{…}, {…}, {…}]"
+  },
+  "onDataChange": "ƒ bound onDataChange() {}",
+  "handleDragEnd": "ƒ bound onDragEnd() {}",
+  "onCardClick": "ƒ bound onCardClick() {}",
+  "hideCardDeleteIcon": true,
+  "style": {
+    "width": 1856,
+    "height": 839,
+    "background": "#fff",
+    "overflowX": "auto",
+    "overflowY": "auto"
+  },
+  "cardStyle": {
+    "whiteSpace": "nowrap",
+    "overflow": "hidden",
+    "textOverflow": "ellipsis"
+  }
+}
 ```
 
-新建表格，展示为仪表盘，选择表单数据会自动生成
 
-![image-20201214154858481](bugs.assets/image-20201214154858481.png)
 
-但奇怪的是组件标题并没有在组件上显示
+```json
 
-![image-20201214155210493](bugs.assets/image-20201214155210493.png)
-
-​	{
-  "placeholder": "信号图仪表盘数据（勿动）",
-  "onChange": "ƒ onChange() {}",
-  "style": {
-​    "width": "100%"
-  }
-}
-
-但如果是其他组件，比如信号图
-
-![image-20201214155252208](bugs.assets/image-20201214155252208.png)
 
 {
-  "placeholder": "信号图仪表盘数据（勿动）",
-  "onChange": "ƒ onChange() {}",
+  "t": "ƒ () {}",
+  "components": {
+    "GlobalStyle": "{$$typeof: Symbol(react.memo), compare: null, type:…}",
+    "BoardWrapper": "{$$typeof: Symbol(react.forward_ref), attrs: Array(…}",
+    "Loader": "ƒ Loader() {}",
+    "ScrollableLane": "{$$typeof: Symbol(react.forward_ref), attrs: Array(…}",
+    "LaneHeader": "ƒ () {}",
+    "LaneFooter": "ƒ _default() {}",
+    "Section": "{$$typeof: Symbol(react.forward_ref), attrs: Array(…}",
+    "NewLaneForm": "ƒ NewLane() {}",
+    "NewLaneSection": "ƒ _default() {}",
+    "NewCardForm": "ƒ NewCardForm() {}",
+    "Card": "ƒ () {}",
+    "AddCardLink": "ƒ _default() {}"
+  },
+  "data": {
+    "lanes": "[{…}, {…}, {…}]"
+  },
+  "onDataChange": "ƒ bound onDataChange() {}",
+  "handleDragEnd": "ƒ bound onDragEnd() {}",
+  "onCardClick": "ƒ bound onCardClick() {}",
+  "hideCardDeleteIcon": true,
   "style": {
-    "width": "100%"
+    "width": 1399,
+    "height": 627,
+    "background": "#fff",
+    "overflowX": "auto",
+    "overflowY": "auto"
+  },
+  "cardStyle": {
+    "whiteSpace": "nowrap",
+    "overflow": "hidden",
+    "textOverflow": "ellipsis"
   }
 }
-
-同样value都是undefined
+```
