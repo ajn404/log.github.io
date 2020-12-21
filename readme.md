@@ -157,3 +157,15 @@ board
 ### draggable上下拖动的时候，其他的draggables不让开
 
 ![1](readme.assets/1.gif)
+
+fullscreen的render代码
+
+![code](readme.assets/code.png)
+
+![code1](readme.assets/code1.png)
+
+可以看出项目管理全屏组件的style是脱皮了的
+
+![image-20201222015156418](readme.assets/image-20201222015156418.png)
+
+![image-20201222015240159](readme.assets/image-20201222015240159.png)
