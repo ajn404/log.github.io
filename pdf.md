@@ -139,3 +139,15 @@ https://styled-components.com/releases#v4.1.0
 #### **创建一个名为`globals.js`的新文件，其中包含`global.SC_DISABLE_SPEEDY = true`并将其作为`index.js`第一件事导入。**
 
 具体怎么实现还得再看看
+
+# by2021/02/23
+
+
+
+![image-20210223181943093](pdf.assets/image-20210223181943093.png)
+
+![image-20210223182146964](pdf.assets/image-20210223182146964.png)
+
+不好测试
+
+如果可以新建测试分支，把以上的猜测一一实践，就好了
