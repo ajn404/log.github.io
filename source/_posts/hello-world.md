@@ -1,38 +1,25 @@
 ---
-title: Hello World
+title: ADMSFGC(我也不知道啥意思)
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+### 关于开发环境搭建
 
-## Quick Start
-
-### Create a new post
-
-``` bash
-$ hexo new "My New Post"
+```shell
+yarn
+npm run dev :默认datasource为DCM4CHEE
 ```
 
-More info: [Writing](https://hexo.io/docs/writing.html)
+### 关于部署
 
-### Run server
-
-``` bash
-$ hexo server
+```
+Orthanc:
+客户端
+服务端
+数据库
 ```
 
-More info: [Server](https://hexo.io/docs/server.html)
+### 角色服务以及关联（简称架构）
 
-### Generate static files
+{% asset_img structure.png This is an image %}
 
-``` bash
-$ hexo generate
-```
+1. 客户端向Orthanc的Dicom服务器(8042端口)查询（使用WADO协议获取图像信息）
 
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-``` bash
-$ hexo deploy
-```
-
-More info: [Deployment](https://hexo.io/docs/one-command-deployment.html)
