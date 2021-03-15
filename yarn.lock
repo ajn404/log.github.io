@@ -592,7 +592,7 @@ hexo-renderer-stylus@^2.0.0:
     nib "^1.1.2"
     stylus "^0.54.8"
 
-hexo-renderer-swig@^1.4.2:
+hexo-renderer-swig@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/hexo-renderer-swig/download/hexo-renderer-swig-1.1.0.tgz#f4937649aedf25304ac51b7fa132d2fe246650b7"
   integrity sha1-9JN2Sa7fJTBKxRt/oTLS/iRmULc=
