@@ -1,5 +1,8 @@
 ---
 title: 毕设
+tags:
+ - 毕业设计过程
+ - 前端架构之路
 ---
 ### 关于开发环境搭建
 
@@ -21,7 +24,7 @@ Orthanc:
 
 #### 存储（注释）
 
-{% asset_img store.png This is an image %}
+{% asset_img store.png 存储流程 %}
 
 ```
 1. 客户端向Orthanc的Dicom服务器(8042端口)查询（使用WADO协议获取图像信息）
@@ -61,9 +64,8 @@ Orthanc:
 
 #### 处理（注释）
 
-{% asset_img intelligent.png This is an image %}
+{% asset_img Intelligent.png 处理流程 %}
 
 ```
 
 ```
-
