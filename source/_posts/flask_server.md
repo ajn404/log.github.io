@@ -1,5 +1,5 @@
 ---
-title： flask server
+title: flask server
 tags:
  - flask
  - server
@@ -48,4 +48,10 @@ app.run(host='0.0.0.0')
 ```
 
 **需要ec2,我用windows本地运行，本地打开localhost:5000，报Internal Server Error**
+
+而实际上，Flask启动的服务环境不够稳定也无法承受大量请求的并发，实际部署过程中配合需要WSGI（Web Server Gateway Interface）使用。
+
+```shell
+pip install uwsgi
+```
 
