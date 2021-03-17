@@ -13,3 +13,8 @@ Dicom企业级存档应用：开源
 ### [Orthanc](https://github.com/jodogne/OrthancDocker)
 
 docker，Dicom REST风格web 服务
+
+### [Orthanc for windows](https://www.orthanc-server.com/download-windows.php)
+windows下载orthanc
+
+

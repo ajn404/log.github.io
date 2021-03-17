@@ -45,7 +45,7 @@ rss:
 footer:
   # Specify the date when the site was setup.
   # If not defined, current year will be used.
-  #since: 2015
+  since: 2021
 
   # Icon between year and copyright info.
   icon: user
@@ -92,7 +92,7 @@ index_with_subtitle: false
 # Value before `||` delimeter is the target link.
 # Value after `||` delimeter is the name of FontAwesome icon. If icon (with or without delimeter) is not specified, question icon will be loaded.
 menu:
-  home: home
+  # home: home
   # about: About
   # tags: /tags/||tags
   # categories: /categories/ || th
@@ -277,7 +277,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night
 
 
 # ---------------------------------------------------------------
@@ -811,3 +811,6 @@ images: images
 
 # Theme version
 version: 5.1.4
+
+#turn off animation
+use_motion: false
