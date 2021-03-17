@@ -1,13 +1,8 @@
 ---
 title: dcm4chee
 tags: 
--ubuntu
--dcm4chee
-comments:true
+ - dcm4chee
 ---
-
-
-
 ### 使用Windows Ubuntu双系统
 
 #### 启用ssh
@@ -16,7 +11,7 @@ comments:true
 ajn404@DESKTOP-2GOT61R:/etc/ssh$ service ssh start
 mkdir: cannot create directory ‘/run/sshd’: Permission denied
 ajn404@DESKTOP-2GOT61R:/etc/ssh$ sudo service ssh start
- * Starting OpenBSD Secure Shell server sshd                                                                         
+ * Starting OpenBSD Secure Shell server sshd                                                                       
  sshd: no hostkeys available -- exiting.
                                                                                                               [fail]
 ajn404@DESKTOP-2GOT61R:/etc/ssh$ sudo ssh-keygen -A
@@ -26,3 +21,9 @@ ajn404@DESKTOP-2GOT61R:/etc/ssh$ sudo service ssh start
 ajn404@DESKTOP-2GOT61R:/etc/ssh$
 ```
 
+### 安装Wildfly
+
+```shell
+#更新存储库索引
+
+```
