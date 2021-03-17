@@ -57,8 +57,8 @@ tags:
 
 {% asset_img Intelligent.png 处理流程 %}
 
-```js
-1. 
+```
+1.
   客户端使用WADO协议从Orthanc dicom服务器(端口:8042)查询以获取dicom图像
   
 2. 
@@ -93,7 +93,6 @@ tags:
       
 6. 
   用户需要在客户端(网络应用程序)可视化分割图像的轮廓点。最后，API将轮廓点返回给OHIF查看器进行可视化。
-
 
 ```
 
