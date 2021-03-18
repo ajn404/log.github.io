@@ -10,3 +10,14 @@ tags:
   See the Pen <a href='https://codepen.io/marcobiedermann/pen/gfvzx'>React Movie Search</a> by Marco Biedermann
   (<a href='https://codepen.io/marcobiedermann'>@marcobiedermann</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
+
+涉及：
+
+- [postcss](https://postcss.org/)
+- react
+- [proptypes](https://react.docschina.org/docs/typechecking-with-proptypes.html)
+
+着重了解proptypes:**类型检查**
+
+
+
