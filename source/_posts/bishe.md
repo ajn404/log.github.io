@@ -1,5 +1,5 @@
 ---
-title: 毕设
+title: 胆道肿瘤精准辅助决策系统
 tags:
  - 毕业设计过程
  - 前端架构之路
@@ -95,4 +95,15 @@ tags:
   用户需要在客户端(网络应用程序)可视化分割图像的轮廓点。最后，API将轮廓点返回给OHIF查看器进行可视化。
 
 ```
+
+### 关于（技术）
+
+|概述| |
+| ---- | ---- |
+| html,css,js,python,ci,cd,git,npm(node),webpack,gulp,react,svg,proptypes,classnames, |      |
+| **js** |      |
+| react | https://reactjs.org/ |
+| classnames | http://jedwatson.github.io/classnames/ |
+| react生命周期 | [react的生命周期](https://www.jianshu.com/p/b331d0e4b398) <br>[详解React生命周期(包括react16最新版)](https://www.jianshu.com/p/514fe21b9914)<br>[流程图](https://upload-images.jianshu.io/upload_images/5287253-80e1623c694bcf36.png)<br> |
+|  |  |
 
