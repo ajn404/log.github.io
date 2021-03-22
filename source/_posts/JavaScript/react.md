@@ -21,3 +21,19 @@ tags:
 
 
 
+### 生命周期
+
+三大阶段：挂载，更新时，卸载
+
+挂载：constructor()
+
+​			getDerivedStateFromProps()
+
+​			rebder()
+
+​			React更新DOM和ｒｅｆｓ
+
+
+
+​			componentDidMount
+

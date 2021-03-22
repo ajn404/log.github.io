@@ -100,7 +100,7 @@ tags:
 
 |概述| |
 | ---- | ---- |
-| html,css,js,python,ci,cd,git,npm(node),webpack,gulp,react,svg,proptypes,classnames, |      |
+| html,css,js,python,ci,cd,git,npm(node),webpack,gulp,react,svg,proptypes,classnames,lerna,vtk.js,cornerstone.js |      |
 | **js** |      |
 | react | https://reactjs.org/ |
 | classnames | http://jedwatson.github.io/classnames/ |
