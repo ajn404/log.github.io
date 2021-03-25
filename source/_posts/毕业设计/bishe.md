@@ -98,9 +98,9 @@ tags:
 
 ### 关于（技术）
 
-|概述| |
+|概述| 做这个项目能体验一把前端的发展史 |
 | ---- | ---- |
-| html,css,js,python,ci,cd,git,npm(node),webpack,gulp,react,svg,proptypes,classnames,lerna,vtk.js,cornerstone.js |      |
+| html,css,js,python,ci,cd,git | npm(node),webpack,gulp,react,svg,proptypes,classnames,lerna,vtk.js,cornerstone.js |
 | **js** |      |
 | react | https://reactjs.org/ |
 | classnames | http://jedwatson.github.io/classnames/ |
