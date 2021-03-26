@@ -1,10 +1,10 @@
 ---
 title: js懒加载
 tags: 
- - 前端架构之路
+ - 前端架构
 ---
 
-### 先上代码
+### JS
 
 ```js
 // This is "probably" IE9 compatible but will need some fallbacks for IE8
@@ -43,3 +43,15 @@ function lazyLoad() {
 以上为懒加载示例
 
 ### 分析
+
+1. load:资源及相关资源已加载完成，[事件参考](https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event)
+
+2. 懒加载即延迟加载;当访问一个页面时,先将img标签中的src链接设为同一张图片(这样就只需请求一次,俗称占位图),将其真正的图片地址存储在img标签的自定义属性中(比如data-src);当js监听到该图片元素进入可视窗口时,即将自定义属性中的地址存储到src属性中,达到懒加载的效果;这样做能防止页面一次性向服务器响应大量请求导致服务器响应慢页面卡顿或崩溃等问题
+
+3. ```css
+   transition: transform 0.1s ease-in-out, box-shadow 0.1s;	
+   &hover
+   transform: translateY(-1.0rem) scale(1.0125);
+   ```
+
+   
