@@ -6,8 +6,8 @@ tags:
 ---
 ### 关于(进度)
 
-- [ ] PACS {% post_link Orthanc%}
- - [ ]  客户端
+- [x] PACS {% post_link Orthanc%}
+ - [x]  客户端
   - [ ] 服务端
   - [ ] 数据库
 
@@ -104,6 +104,7 @@ tags:
 | **js** |      |
 | react | https://reactjs.org/ |
 | classnames | http://jedwatson.github.io/classnames/ |
-| react生命周期 | [react的生命周期](https://www.jianshu.com/p/b331d0e4b398) <br>[详解React生命周期(包括react16最新版)](https://www.jianshu.com/p/514fe21b9914)<br>[流程图](https://upload-images.jianshu.io/upload_images/5287253-80e1623c694bcf36.png)<br> |
+| react生命周期 | [react的生命周期](https://www.jianshu.com/p/b331d0e4b398) <br>[详解React生命周期(包括react16最新版)](https://www.jianshu.com/p/514fe21b9914)<br>[流程图](https://upload-images.jianshu.io/upload_images/5287253-80e1623c694bcf36.png) |
+| keycloak | https://www.keycloak.org/downloads.html<br>用于构建绑定的登录注册系统<br>候补方案：nodejs+express+mongodb |
 |  |  |
 
