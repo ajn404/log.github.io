@@ -217,7 +217,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/03/27/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/20210325-2/react%E4%BC%A0%E5%80%BC/">
+    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/03/30/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/AI%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/20210322/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -236,7 +236,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/log.github.io/2021/03/27/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/20210325-2/react%E4%BC%A0%E5%80%BC/" itemprop="url">react传值问题</a></h1>
+                <a class="post-title-link" href="/log.github.io/2021/03/30/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/AI%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/20210322/" itemprop="url">AI模拟面试一</a></h1>
         
 
         <div class="post-meta">
@@ -248,8 +248,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-27T14:57:01+00:00">
-                2021-03-27
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-30T01:45:14+00:00">
+                2021-03-30
               </time>
             
 
@@ -288,32 +288,22 @@
       
         
           
-            <h3 id="react传值方法"><a href="#react传值方法" class="headerlink" title="react传值方法"></a>react传值方法</h3><ol>
-<li><p>父组件-&gt;子组件，props</p>
-<p>缺点：嵌套深，交流成本变高</p>
+            <ol>
+<li><h3 id="请你说说既然函数式引用类型，为什么-vue-的-data-还是可以用函数"><a href="#请你说说既然函数式引用类型，为什么-vue-的-data-还是可以用函数" class="headerlink" title="请你说说既然函数式引用类型，为什么 vue 的 data 还是可以用函数"></a>请你说说既然函数式引用类型，为什么 vue 的 data 还是可以用函数</h3><p><strong>vue为了保证每个实例上的data数据的独立性，规定了必须使用函数，而不是对象。</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.imqianduan.com/vue/192.html">https://www.imqianduan.com/vue/192.html</a></p>
 </li>
-<li><p>子组件-&gt;父组件，传入回调函数给props</p>
-<p>缺点同上</p>
-</li>
-<li><p>兄弟组件之间通信，<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/docs/lifting-state-up.html">react状态提升</a></p>
-</li>
-<li><p>useContext</p>
-</li>
-<li><p>使用观察者模式，引入EventEmitter或者<a target="_blank" rel="noopener" href="https://www.bootcdn.cn/postal.js/">postal.js</a></p>
-</li>
-<li><p>使用状态管理库，MobX或者Redux</p>
+<li><h3 id="请你说说express，中间件"><a href="#请你说说express，中间件" class="headerlink" title="请你说说express，中间件"></a>请你说说express，中间件</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mq0036/p/5243312.html#toc3">https://www.cnblogs.com/mq0036/p/5243312.html#toc3</a></p>
+<p><em>中间件</em>函数能够访问<a target="_blank" rel="noopener" href="https://expressjs.com/zh-cn/4x/api.html#req">请求对象</a> (<code>req</code>)、<a target="_blank" rel="noopener" href="https://expressjs.com/zh-cn/4x/api.html#res">响应对象</a> (<code>res</code>) 以及应用程序的请求/响应循环中的下一个中间件函数。</p>
+<p>中间件函数可以执行以下任务：</p>
+<ul>
+<li>执行任何代码。</li>
+<li>对请求和响应对象进行更改。</li>
+<li>结束请求/响应循环。</li>
+<li>调用堆栈中的下一个中间件函数</li>
+</ul>
+<p>如果当前中间件函数没有结束请求/响应循环，那么它必须调用 <code>next()</code>，以将控制权传递给下一个中间件函数。否则，请求将保持挂起状态。</p>
 </li>
 </ol>
-<h3 id="React状态提升实例"><a href="#React状态提升实例" class="headerlink" title="React状态提升实例"></a>React状态提升实例</h3><iframe height="400" style="width: 100%;" scrolling="no" title="ExZVOKq" src="https://codepen.io/ajn404/embed/ExZVOKq?height=265&theme-id=light&default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a target="_blank" rel="noopener" href='https://codepen.io/ajn404/pen/ExZVOKq'>ExZVOKq</a> by ajn404
-  (<a target="_blank" rel="noopener" href='https://codepen.io/ajn404'>@ajn404</a>) on <a target="_blank" rel="noopener" href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-<p>参考</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yoable/p/8017354.html">https://www.cnblogs.com/yoable/p/8017354.html</a></li>
-<li>《React进阶之路》</li>
-</ul>
 
           
         
@@ -353,7 +343,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/log.github.io/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/log.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/log.github.io/page/18/">18</a><a class="page-number" href="/log.github.io/page/19/">19</a><a class="extend next" rel="next" href="/log.github.io/page/18/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/log.github.io/page/16/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/log.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/16/">16</a><span class="page-number current">17</span><a class="page-number" href="/log.github.io/page/18/">18</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/24/">24</a><a class="extend next" rel="next" href="/log.github.io/page/18/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -399,7 +389,7 @@
               
                 <a href="/log.github.io/archives">
               
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
