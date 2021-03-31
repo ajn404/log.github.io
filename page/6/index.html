@@ -217,7 +217,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/03/30/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/20210327-4/%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BC%A0%E9%80%92/">
+    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/03/31/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/flask_server/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -236,7 +236,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/log.github.io/2021/03/30/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/20210327-4/%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BC%A0%E9%80%92/" itemprop="url">值类型和引用类型的传递</a></h1>
+                <a class="post-title-link" href="/log.github.io/2021/03/31/%E6%AF%95%E4%B8%9A%E8%AE%BE%E8%AE%A1/flask_server/" itemprop="url">flask server</a></h1>
         
 
         <div class="post-meta">
@@ -248,8 +248,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-30T01:45:14+00:00">
-                2021-03-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-31T05:17:19+00:00">
+                2021-03-31
               </time>
             
 
@@ -288,28 +288,14 @@
       
         
           
-            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,salary</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">this</span>.name=name;</span><br><span class="line">	<span class="built_in">this</span>.age=age;</span><br><span class="line">	<span class="built_in">this</span>.salary=salary;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">person</span>)</span>&#123;</span><br><span class="line">	person.name=<span class="string">&quot;ls&quot;</span>;</span><br><span class="line">	person =<span class="keyword">new</span> Person(<span class="string">&quot;aa&quot;</span>,<span class="number">18</span>,<span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p =<span class="keyword">new</span> Person(<span class="string">&quot;zs&quot;</span>,<span class="number">18</span>,<span class="number">1000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p.name);</span><br><span class="line">f1(p);</span><br><span class="line"><span class="built_in">console</span>.log(p.name)</span><br><span class="line"><span class="comment">//zs</span></span><br><span class="line"><span class="comment">//ls</span></span><br></pre></td></tr></table></figure>
+            <h3 id="HelloWorld"><a href="#HelloWorld" class="headerlink" title="HelloWorld"></a>HelloWorld</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask</span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Request</span><br><span class="line"></span><br><span class="line">app = Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/hello&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">hello</span>():</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;Hello World&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__==<span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>,port=<span class="number">1234</span>)</span><br></pre></td></tr></table></figure>
 
-<p>涉及：</p>
-<ul>
-<li>值类型与引用类型的区别</li>
-<li>堆内存与栈内存</li>
-</ul>
-<h3 id="基本数据类型-简单、原始，基本"><a href="#基本数据类型-简单、原始，基本" class="headerlink" title="基本数据类型(简单、原始，基本)"></a>基本数据类型(简单、原始，基本)</h3><p>Undefined,Null,Symbol,String,Number,Boolean</p>
-<p><strong>基本数据类型的变量是存放在栈内存中的</strong></p>
-<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p>Object,Array,Date,RegExp,Function</p>
-<p>引用类型的值是保存在堆内存中的对象</p>
-<h3 id="检测类型"><a href="#检测类型" class="headerlink" title="检测类型"></a>检测类型</h3><ol>
-<li><p>typeof</p>
-<p>检测变量是否为基本数据类型</p>
-</li>
-<li><p>instance of</p>
-<p>判断某个构造函数的prototype属性所指向的对象是否存在于另一个要检测对象的原型链上</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&#123;&#125;) instance <span class="keyword">of</span> <span class="built_in">Object</span>		<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h3 id="简单函数回显传入的参数"><a href="#简单函数回显传入的参数" class="headerlink" title="简单函数回显传入的参数"></a>简单函数回显传入的参数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> flask <span class="keyword">as</span> falsk</span><br><span class="line"></span><br><span class="line">app =falsk.Flask(__name__)</span><br><span class="line"></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&quot;/predict&quot;</span>,methods=[<span class="string">&quot;GET&quot;</span>,<span class="string">&quot;POST&quot;</span>]</span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">predict</span>():</span></span><br><span class="line">    data = &#123;<span class="string">&quot;success&quot;</span>:<span class="literal">False</span>&#125;</span><br><span class="line">    <span class="comment"># 获取请求参数</span></span><br><span class="line">    params=flask.request.json</span><br><span class="line">    <span class="keyword">if</span>(params==<span class="literal">None</span>):</span><br><span class="line">        params=flask.request.json</span><br><span class="line">    <span class="keyword">if</span>(params==<span class="literal">None</span>):</span><br><span class="line">        params=flask.request.args</span><br><span class="line">    <span class="keyword">if</span>(params!=<span class="literal">None</span>):</span><br><span class="line">        data[<span class="string">&quot;response&quot;</span>]=params.get(<span class="string">&quot;msg&quot;</span>)</span><br><span class="line">        data[<span class="string">&quot;success&quot;</span>]=<span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> flask.jsonify(data)</span><br><span class="line"></span><br><span class="line">app.run(host=<span class="string">&#x27;0.0.0.0&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<h3 id="关于原型链"><a href="#关于原型链" class="headerlink" title="关于原型链"></a>关于原型链</h3><p><strong>每个实例对象都有一个私有属性__proto__指向它的构造函数的d的原型对象prototype</strong></p>
+<p><strong>需要ec2,我用windows本地运行，本地打开localhost:5000，报Internal Server Error</strong></p>
+<p>而实际上，Flask启动的服务环境不够稳定也无法承受大量请求的并发，实际部署过程中配合需要WSGI（Web Server Gateway Interface）使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install uwsgi</span><br></pre></td></tr></table></figure>
+
 
           
         
@@ -349,7 +335,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/log.github.io/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/log.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/log.github.io/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/24/">24</a><a class="extend next" rel="next" href="/log.github.io/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/log.github.io/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/log.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/log.github.io/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/27/">27</a><a class="extend next" rel="next" href="/log.github.io/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -395,7 +381,7 @@
               
                 <a href="/log.github.io/archives">
               
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
