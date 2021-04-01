@@ -66,30 +66,45 @@ tags:
   
 3. 
   客户端从dicom图像中获取像素数据，并从dicom标签中获取图像的高度和宽度。
+  
   从像素数据构建图像需要有图像尺寸。
+  
   因为在javascript中，检索到的图像像素数据看起来像一行中的数组对象，而不是numpy。
+  
   然后，OHIF查看器将像素数据和图像大小转换为JSON字符串。
   
 4. 
   客户端(端口:3000)使用Ajax通过HTTP POST请求
+  
   (URL:HTTP://localhost:5000/segmentation)
+  
    向服务器端发送JSON数据，以便能够为用户获得预测结果并可视化。
    
 5. 
    在服务器端，新创建的REST API接收JSON数据并执行以下操作:
+   
     1. 首先，使用整形生成并构建16位图像。然后，16位图像被转换为8位，并在[0，255]之间重新缩放。
  
     2. 转换后的图像大小调整为U-Net网络的输入大小(256x256)。
     
     3. 预先训练的U-Net深度学习模型照常运行(即我们如何测试它的预测)，
+    
     	(1)测试生成器为keras模型生成图像，
+    	
     	(2)加载网络和模型权重，
+    	
     	(3)预测生成器给出分割概率图)。
+    	
        之后，一个API清除一个keras模型的会话。
+       
        重要的是清除一个会话，否则在下一次预测中，它可能会由于keras张量而给出一个错误。
+       
     4.然后，对图像的分割概率图应用阈值(0.5)。
+    
       如果在一个分割的轮廓内有小的黑洞，就用闭合的形态变换去除。
+      
       分割后的图像被重新调整到原始尺寸，分割后的轮廓点的坐标使用openCV查找轮廓功能生成
+      
       
 6. 
   用户需要在客户端(网络应用程序)可视化分割图像的轮廓点。最后，API将轮廓点返回给OHIF查看器进行可视化。
@@ -107,6 +122,9 @@ tags:
 | react生命周期 | [react的生命周期](https://www.jianshu.com/p/b331d0e4b398) <br>[详解React生命周期(包括react16最新版)](https://www.jianshu.com/p/514fe21b9914)<br>[流程图](https://upload-images.jianshu.io/upload_images/5287253-80e1623c694bcf36.png) |
 | keycloak | https://www.keycloak.org/downloads.html<br>用于构建绑定的登录注册系统<br>候补方案：nodejs+express+mongodb |
 | 技术细节 | [毕业设计技术细节](./bishe_detail) |
-|  | |
-|  | |
+| Viewers组件库 | https://react.ohif.org/ |
+| Viewers使用 | |
+| immer使用 | [关于immer](https://segmentfault.com/a/1190000021453078)<br>https://github.com/immerjs/immer |
+
+### 设计以及体验优化
 

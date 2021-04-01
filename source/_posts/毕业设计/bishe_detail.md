@@ -182,4 +182,11 @@ export default actions;
 
 - action是store数据的唯一来源，本质是javascript的普通对象
 - action表示应用内部的各类动作或者操作，不同的动作会改变相应的state状态，就是**带有type属性的对象**
-- 
+
+- > ([{}]).toString()
+  > "[object Object]"
+
+```
+
+```
+
