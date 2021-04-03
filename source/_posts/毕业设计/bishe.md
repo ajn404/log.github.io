@@ -128,3 +128,11 @@ tags:
 
 ### 设计以及体验优化
 
+### netlify+DCM4CHEE部署（无服务器）
+
+```js
+//yarn run build
+//drag into https://app.netlify.com/
+//https://awesome-clarke-64376b.netlify.app/
+```
+
