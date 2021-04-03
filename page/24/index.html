@@ -217,7 +217,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/04/01/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/20210327-4/%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BC%A0%E9%80%92/">
+    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/03/18/JavaScript/react/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -236,7 +236,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/log.github.io/2021/04/01/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/20210327-4/%E5%80%BC%E7%B1%BB%E5%9E%8B%E4%B8%8E%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E7%9A%84%E4%BC%A0%E9%80%92/" itemprop="url">值类型和引用类型的传递</a></h1>
+                <a class="post-title-link" href="/log.github.io/2021/03/18/JavaScript/react/" itemprop="url">react</a></h1>
         
 
         <div class="post-meta">
@@ -248,8 +248,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-01T07:55:46+00:00">
-                2021-04-01
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-03-18T14:04:39+00:00">
+                2021-03-18
               </time>
             
 
@@ -288,28 +288,24 @@
       
         
           
-            <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age,salary</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">this</span>.name=name;</span><br><span class="line">	<span class="built_in">this</span>.age=age;</span><br><span class="line">	<span class="built_in">this</span>.salary=salary;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f1</span>(<span class="params">person</span>)</span>&#123;</span><br><span class="line">	person.name=<span class="string">&quot;ls&quot;</span>;</span><br><span class="line">	person =<span class="keyword">new</span> Person(<span class="string">&quot;aa&quot;</span>,<span class="number">18</span>,<span class="number">10</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p =<span class="keyword">new</span> Person(<span class="string">&quot;zs&quot;</span>,<span class="number">18</span>,<span class="number">1000</span>);</span><br><span class="line"><span class="built_in">console</span>.log(p.name);</span><br><span class="line">f1(p);</span><br><span class="line"><span class="built_in">console</span>.log(p.name)</span><br><span class="line"><span class="comment">//zs</span></span><br><span class="line"><span class="comment">//ls</span></span><br></pre></td></tr></table></figure>
+            <h3 id="proptypes"><a href="#proptypes" class="headerlink" title="proptypes"></a>proptypes</h3><iframe height="265" style="width: 100%; height: 500px" scrolling="no" title="React Movie Search" src="https://codepen.io/marcobiedermann/embed/gfvzx?height=265&theme-id=light&default-tab=js,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a target="_blank" rel="noopener" href='https://codepen.io/marcobiedermann/pen/gfvzx'>React Movie Search</a> by Marco Biedermann
+  (<a target="_blank" rel="noopener" href='https://codepen.io/marcobiedermann'>@marcobiedermann</a>) on <a target="_blank" rel="noopener" href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 <p>涉及：</p>
 <ul>
-<li>值类型与引用类型的区别</li>
-<li>堆内存与栈内存</li>
+<li><a target="_blank" rel="noopener" href="https://postcss.org/">postcss</a></li>
+<li>react</li>
+<li><a target="_blank" rel="noopener" href="https://react.docschina.org/docs/typechecking-with-proptypes.html">proptypes</a></li>
 </ul>
-<h3 id="基本数据类型-简单、原始，基本"><a href="#基本数据类型-简单、原始，基本" class="headerlink" title="基本数据类型(简单、原始，基本)"></a>基本数据类型(简单、原始，基本)</h3><p>Undefined,Null,Symbol,String,Number,Boolean</p>
-<p><strong>基本数据类型的变量是存放在栈内存中的</strong></p>
-<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><p>Object,Array,Date,RegExp,Function</p>
-<p>引用类型的值是保存在堆内存中的对象</p>
-<h3 id="检测类型"><a href="#检测类型" class="headerlink" title="检测类型"></a>检测类型</h3><ol>
-<li><p>typeof</p>
-<p>检测变量是否为基本数据类型</p>
-</li>
-<li><p>instance of</p>
-<p>判断某个构造函数的prototype属性所指向的对象是否存在于另一个要检测对象的原型链上</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&#123;&#125;) instance <span class="keyword">of</span> <span class="built_in">Object</span>		<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<h3 id="关于原型链"><a href="#关于原型链" class="headerlink" title="关于原型链"></a>关于原型链</h3><p><strong>每个实例对象都有一个私有属性__proto__指向它的构造函数的d的原型对象prototype</strong></p>
+<p>着重了解proptypes:<strong>类型检查</strong></p>
+<h3 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h3><p>三大阶段：挂载，更新时，卸载</p>
+<p>挂载：constructor()</p>
+<p>​            getDerivedStateFromProps()</p>
+<p>​            rebder()</p>
+<p>​            React更新DOM和ｒｅｆｓ</p>
+<p>​            componentDidMount</p>
 
           
         
@@ -349,7 +345,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/log.github.io/page/23/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/log.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/log.github.io/page/25/">25</a><a class="page-number" href="/log.github.io/page/26/">26</a><a class="extend next" rel="next" href="/log.github.io/page/25/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/log.github.io/page/23/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/log.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/23/">23</a><span class="page-number current">24</span>
   </nav>
 
 
@@ -395,7 +391,7 @@
               
                 <a href="/log.github.io/archives">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
