@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="js(看了原理五分钟内自己写,不一定正确)123456789var alertSort&#x3D;function (array)&amp;#123;	const len&#x3D;array.length;    let i&#x3D;1;    for(i;i&lt;len;i++)&amp;#123;        while(array[i]&lt;array[i-1]&amp;&amp;i&gt;&#x3D;0)&amp;#123;">
+<meta name="description" content="验证一个数是否为素数123456789101112131415161718function isPrime(num)&amp;#123;    if(num&#x3D;&#x3D;&#x3D;2||num &#x3D;&#x3D;&#x3D;3)&amp;#123;        return true    &amp;#125;    if(num%2&#x3D;&#x3D;&#x3D;0)&amp;#123;        return false;    &amp;#125;    let divisor &#x3D;3,lim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="插入排序">
-<meta property="og:url" content="https://ajn404.github.io/log.github.io/2021/04/03/JavaScript/%E6%8E%92%E5%BA%8F/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:title" content="常见算法">
+<meta property="og:url" content="https://ajn404.github.io/log.github.io/2021/04/03/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="此地无银三百两">
-<meta property="og:description" content="js(看了原理五分钟内自己写,不一定正确)123456789var alertSort&#x3D;function (array)&amp;#123;	const len&#x3D;array.length;    let i&#x3D;1;    for(i;i&lt;len;i++)&amp;#123;        while(array[i]&lt;array[i-1]&amp;&amp;i&gt;&#x3D;0)&amp;#123;">
+<meta property="og:description" content="验证一个数是否为素数123456789101112131415161718function isPrime(num)&amp;#123;    if(num&#x3D;&#x3D;&#x3D;2||num &#x3D;&#x3D;&#x3D;3)&amp;#123;        return true    &amp;#125;    if(num%2&#x3D;&#x3D;&#x3D;0)&amp;#123;        return false;    &amp;#125;    let divisor &#x3D;3,lim">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-04-03T08:59:06.500Z">
 <meta property="article:modified_time" content="2021-04-03T08:59:06.500Z">
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="https://ajn404.github.io/log.github.io/2021/04/03/JavaScript/排序/插入排序/"/>
+  <link rel="canonical" href="https://ajn404.github.io/log.github.io/2021/04/03/JavaScript/面试准备第一期/常见算法/常见算法/"/>
 
 
 
 
 
-  <title>插入排序 | 此地无银三百两</title>
+  <title>常见算法 | 此地无银三百两</title>
   
 
 
@@ -220,7 +220,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/04/03/JavaScript/%E6%8E%92%E5%BA%8F/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">
+    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/04/03/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -237,7 +237,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">插入排序</h1>
+          <h1 class="post-title" itemprop="name headline">常见算法</h1>
         
 
         <div class="post-meta">
@@ -287,16 +287,11 @@
       
 
       
-        <h3 id="js-看了原理五分钟内自己写-不一定正确"><a href="#js-看了原理五分钟内自己写-不一定正确" class="headerlink" title="js(看了原理五分钟内自己写,不一定正确)"></a>js(看了原理五分钟内自己写,不一定正确)</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> alertSort=<span class="function"><span class="keyword">function</span> (<span class="params">array</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> len=array.length;</span><br><span class="line">    <span class="keyword">let</span> i=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(i;i&lt;len;i++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(array[i]&lt;array[i-<span class="number">1</span>]&amp;&amp;i&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">            swap(i,i-<span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h3 id="验证一个数是否为素数"><a href="#验证一个数是否为素数" class="headerlink" title="验证一个数是否为素数"></a>验证一个数是否为素数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num===<span class="number">2</span>||num ===<span class="number">3</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(num%<span class="number">2</span>===<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> divisor =<span class="number">3</span>,limit=<span class="built_in">Math</span>.sqrt(num);</span><br><span class="line">    <span class="keyword">while</span>(limit&gt;=divisor)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num%divisor===<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            divisor+=<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>3 4 2 5 1</p>
-<p>3 4</p>
-<p>2 3 4</p>
-<p>2 3 4 5 </p>
-<p>1 2 3 4 5</p>
-<h3 id="书上的"><a href="#书上的" class="headerlink" title="书上的"></a>书上的</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">this</span>.insertionSort=<span class="function"><span class="title">fuction</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> length=array.length,j,temp;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;length;i++)&#123;</span><br><span class="line">        j=i;</span><br><span class="line">        temp=array[i];</span><br><span class="line">        <span class="keyword">while</span>(j&gt;<span class="number">0</span>&amp;&amp;array[j-<span class="number">1</span>]&gt;temp)&#123;</span><br><span class="line">            array[j]=array[j-<span class="number">1</span>];</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        array[j]=temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="斐波那契"><a href="#斐波那契" class="headerlink" title="斐波那契"></a>斐波那契</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fibonacci</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> Fibonacci(n-<span class="number">1</span>)+Fibonacci(n-<span class="number">2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="思否"><a href="#思否" class="headerlink" title="思否"></a>思否</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> length = arr.length;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt; length; i++) &#123;</span><br><span class="line">    <span class="keyword">let</span> temp = arr[i];</span><br><span class="line">    <span class="keyword">let</span> j = i;</span><br><span class="line">    <span class="keyword">for</span>(; j &gt; <span class="number">0</span>; j--) &#123;</span><br><span class="line">      <span class="keyword">if</span>(temp &gt;= arr[j-<span class="number">1</span>]) &#123;</span><br><span class="line">        <span class="keyword">break</span>;      <span class="comment">// 当前考察的数大于前一个数，证明有序，退出循环</span></span><br><span class="line">      &#125;</span><br><span class="line">      arr[j] = arr[j-<span class="number">1</span>]; <span class="comment">// 将前一个数复制到后一个数上</span></span><br><span class="line">    &#125;</span><br><span class="line">    arr[j] = temp;  <span class="comment">// 找到考察的数应处于的位置</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// example</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">2</span>,<span class="number">5</span>,<span class="number">10</span>,<span class="number">7</span>,<span class="number">10</span>,<span class="number">32</span>,<span class="number">90</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">10</span>]</span><br><span class="line"><span class="built_in">console</span>.log(insertSort(arr));</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fibonacci</span>(<span class="params">n</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">let</span> f=<span class="number">0</span>,g=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(n--)&#123;</span><br><span class="line">        f=f+g;</span><br><span class="line">        g=f-g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
       
@@ -322,8 +317,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/log.github.io/2021/04/03/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/AI%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/20210322/" rel="next" title="AI模拟面试一">
-                <i class="fa fa-chevron-left"></i> AI模拟面试一
+              <a href="/log.github.io/2021/04/03/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="next" title="关于动态规划">
+                <i class="fa fa-chevron-left"></i> 关于动态规划
               </a>
             
           </div>
@@ -332,8 +327,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/log.github.io/2021/04/03/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/AI%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95/20210323/" rel="prev" title="AI模拟面试二">
-                AI模拟面试二 <i class="fa fa-chevron-right"></i>
+              <a href="/log.github.io/2021/04/03/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E9%9D%A2%E7%BB%8F%E6%80%BB%E7%BB%93/20210223-1/index/" rel="prev" title="304">
+                304 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -467,7 +462,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#js-%E7%9C%8B%E4%BA%86%E5%8E%9F%E7%90%86%E4%BA%94%E5%88%86%E9%92%9F%E5%86%85%E8%87%AA%E5%B7%B1%E5%86%99-%E4%B8%8D%E4%B8%80%E5%AE%9A%E6%AD%A3%E7%A1%AE"><span class="nav-number">1.</span> <span class="nav-text">js(看了原理五分钟内自己写,不一定正确)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B9%A6%E4%B8%8A%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">书上的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%9D%E5%90%A6"><span class="nav-number">3.</span> <span class="nav-text">思否</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AA%8C%E8%AF%81%E4%B8%80%E4%B8%AA%E6%95%B0%E6%98%AF%E5%90%A6%E4%B8%BA%E7%B4%A0%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">验证一个数是否为素数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91"><span class="nav-number">2.</span> <span class="nav-text">斐波那契</span></a></li></ol></div>
             
 
           </div>
