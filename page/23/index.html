@@ -217,7 +217,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/04/04/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/js%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/">
+    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/04/04/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -236,7 +236,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/log.github.io/2021/04/04/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/js%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/" itemprop="url">前端</a></h1>
+                <a class="post-title-link" href="/log.github.io/2021/04/04/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/" itemprop="url">常见算法</a></h1>
         
 
         <div class="post-meta">
@@ -248,7 +248,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-04T08:14:30+00:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-04T14:51:36+00:00">
                 2021-04-04
               </time>
             
@@ -288,244 +288,13 @@
       
         
           
-            <h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><h3 id="减少http请求"><a href="#减少http请求" class="headerlink" title="减少http请求"></a>减少http请求</h3><p><strong>一个完整的http请求：域名解析，与服务器建立连接（三次握手），发起http请求，服务器相应http请求浏览器得到html代码，浏览器解析html并请求资源，浏览器进行页面的渲染，断开连接（四次挥手）</strong></p>
-<ol>
-<li><p>域名解析</p>
-<p>搜索浏览器自身的DNS缓存，搜索操作系统自身的DNS缓存，Windows系统尝试读取host文件，发起dns系统调用</p>
-</li>
-<li><p>与服务器建立连接</p>
-<p>TCP三次握手四次挥手</p>
-<p>TCP连接的基础：</p>
-<ul>
-<li>TCP连接的端点叫套接字或者插口，套接字定义为端口号拼接到ip地址</li>
-<li>每条TCP连接唯一地被通信两端的两个端点（即两个套接字）所确定</li>
-<li>同一个名词Socket可以表示多种不同的意思</li>
-<li>停止等待协议</li>
-<li>滑动窗口协议</li>
-<li>TCP拥塞控制：慢开始与拥塞避免，快重传与快恢复</li>
-<li>TCP的主要特点是：<ul>
-<li>面向连接</li>
-<li>每条TCP连接只能是点对点，一对一的</li>
-<li>提供可靠交付的服务</li>
-<li>提供全双工通信</li>
-<li>面向字节流</li>
-</ul>
-</li>
-<li>TCP连接建立，服务器确认客户的连接请求后，客户要对服务器的确认再进行确认</li>
-<li>TCP连接释放，任何一方都可以在数据传送结束后发出连接释放通知，待对方确认后进入半关闭状态，当另一方也没有数据再发送时，则发送连接释放通知，对方确认后关闭TCP连接</li>
-</ul>
-</li>
-<li><p>发起http请求</p>
-<p>8中请求方法：GET，POST，PUT，DELETE，PATCH，HEAD，OPTIONS，TRACE</p>
-<p>RESTful api常用GET POST DELETE　PUT</p>
-<p>默认端口号</p>
-</li>
-<li><p>服务器响应http请求，浏览器获得html代码</p>
-<p>服务器负载均衡：位于网站的最前端，把短时间较高的访问量分摊到不同机器上处理，方案分为硬件和软件</p>
-<p>状态码：</p>
-<table>
-<thead>
-<tr>
-<th>1**</th>
-<th>服务器收到请求，需要请求者继续执行操作</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>100</td>
-<td>continue：继续，客户端应继续其请求</td>
-</tr>
-<tr>
-<td>101</td>
-<td>Switching Protocols：切换协议，服务器根据客户端的请求切换协议，只能切换到更高级的协议</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>2**</strong></td>
-<td><strong>成功，操作被成功接收并处理</strong></td>
-</tr>
-<tr>
-<td>200</td>
-<td>OK：请求成功，一般用于GET或者POST请求</td>
-</tr>
-<tr>
-<td>201</td>
-<td>Created：成功请求并创建了新的资源</td>
-</tr>
-<tr>
-<td>202</td>
-<td>Accepted：已接收，已接收请求，但未处理完成</td>
-</tr>
-<tr>
-<td>203</td>
-<td>非授权信息</td>
-</tr>
-<tr>
-<td>204</td>
-<td>无内容</td>
-</tr>
-<tr>
-<td>205</td>
-<td>重置内容</td>
-</tr>
-<tr>
-<td><strong>3**</strong></td>
-<td><strong>重定向，需要进一步的操作以完成请求</strong></td>
-</tr>
-<tr>
-<td>300</td>
-<td>多种选择</td>
-</tr>
-<tr>
-<td>301</td>
-<td>永久移动</td>
-</tr>
-<tr>
-<td>302</td>
-<td>临时移动</td>
-</tr>
-<tr>
-<td>303</td>
-<td>查看其它地址</td>
-</tr>
-<tr>
-<td>304</td>
-<td>Not Modified：未修改：所请求的资源未修改，服务器返回此状态码时，不会返回任何资源，客户端通常会缓存所访问过的资源，通过提供一个头信息指出客户端希望只返回指定日期之后修改的资源<br>如果客户端返回一个带条件的GET请求且该请求已被允许，而文档的内容并没有改变，则服务器应当返回这个状态码。304响应禁止包含消息体，因此始终以消息头后的第一个空行结尾</td>
-</tr>
-<tr>
-<td>305</td>
-<td>Use Proxy:使用代理，所请求的资源必须通过代理访问</td>
-</tr>
-<tr>
-<td>306</td>
-<td>Unused</td>
-</tr>
-<tr>
-<td>307</td>
-<td>临时重定向</td>
-</tr>
-<tr>
-<td><strong>4**</strong></td>
-<td><strong>客户端错误，请求包含语法错误</strong></td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized，请求要求用户的身份认证</td>
-</tr>
-<tr>
-<td>402</td>
-<td></td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden：服务器理解请求客户端的请求，但是决绝执行此请求</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found</td>
-</tr>
-<tr>
-<td>405</td>
-<td>请求中的方法被禁止</td>
-</tr>
-<tr>
-<td>406</td>
-<td>服务器无法根据请求的内容特性完成请求</td>
-</tr>
-<tr>
-<td>407</td>
-<td>请求要求代理的身份认证</td>
-</tr>
-<tr>
-<td>408</td>
-<td>服务器等待</td>
-</tr>
-<tr>
-<td>5**</td>
-<td></td>
-</tr>
-<tr>
-<td>500</td>
-<td>服务器遇到了一个未曾预料到的状况</td>
-</tr>
-<tr>
-<td>501</td>
-<td></td>
-</tr>
-<tr>
-<td>502</td>
-<td>作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应</td>
-</tr>
-<tr>
-<td>503</td>
-<td></td>
-</tr>
-<tr>
-<td>504</td>
-<td></td>
-</tr>
-<tr>
-<td>509</td>
-<td>服务器达到带宽限制</td>
-</tr>
-<tr>
-<td>510</td>
-<td>获取资源所需要的策略并没有被满足</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<p>一个http请求实例</p>
+            <h3 id="验证一个数是否为素数"><a href="#验证一个数是否为素数" class="headerlink" title="验证一个数是否为素数"></a>验证一个数是否为素数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPrime</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num===<span class="number">2</span>||num ===<span class="number">3</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(num%<span class="number">2</span>===<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> divisor =<span class="number">3</span>,limit=<span class="built_in">Math</span>.sqrt(num);</span><br><span class="line">    <span class="keyword">while</span>(limit&gt;=divisor)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num%divisor===<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            divisor+=<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="斐波那契"><a href="#斐波那契" class="headerlink" title="斐波那契"></a>斐波那契</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fibonacci</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(n==<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> Fibonacci(n-<span class="number">1</span>)+Fibonacci(n-<span class="number">2</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Fibonacci</span>(<span class="params">n</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">let</span> f=<span class="number">0</span>,g=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(n--)&#123;</span><br><span class="line">        f=f+g;</span><br><span class="line">        g=f-g;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-</li>
-</ol>
-<p>其中：</p>
-<ul>
-<li>Queueing：在请求队列中的时间</li>
-<li>Stalled: 从TCP 连接建立完成，到真正可以传输数据之间的时间差，此时间包括代理协商时间。</li>
-<li>Proxy negotiation: 与代理服务器连接进行协商所花费的时间。</li>
-<li>DNS Lookup: 执行DNS查找所花费的时间，页面上的每个不同的域都需要进行DNS查找。</li>
-<li>Initial Connection / Connecting: 建立连接所花费的时间，包括TCP握手/重试和协商SSL。</li>
-<li>SSL: 完成SSL握手所花费的时间。</li>
-<li>Request sent: 发出网络请求所花费的时间，通常为一毫秒的时间。</li>
-<li>Waiting(TFFB): TFFB 是发出页面请求到接收到应答数据第一个字节的时间。</li>
-<li>Content Download: 接收响应数据所花费的时间。</li>
-</ul>
-<p>建议将多个小文件合并成为一个大文件，从而减小http请求的次数</p>
-<h3 id="使用HTTP2"><a href="#使用HTTP2" class="headerlink" title="使用HTTP2"></a>使用HTTP2</h3><h4 id="http1-0与http1-1的区别"><a href="#http1-0与http1-1的区别" class="headerlink" title="http1.0与http1.1的区别"></a>http1.0与http1.1的区别</h4><ul>
-<li>缓存处理：http1.1引入了更多的缓存控制策略</li>
-<li>带宽优化以及网络连接的使用，http1.1在请求头引入了range头域，它允许只请求资源的某个部分，即返回码206（Partial Content）</li>
-<li>错误通知管理：http1.1新增了24个错误状态响应码</li>
-<li>Host头处理：http1.1的请求消息和响应消息都支持Host头域，且请求消息中如果没有Host头域会报400</li>
-<li>长连接：HTTP 1.1支持长连接（PersistentConnection）和请求的流水线（Pipelining）处理，在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟，在HTTP1.1中默认开启Connection： keep-alive，一定程度上弥补了HTTP1.0每次请求都要创建连接的缺点。</li>
-</ul>
-<h4 id="https与http"><a href="#https与http" class="headerlink" title="https与http"></a>https与http</h4><ul>
-<li>https需要到CA申请证书</li>
-<li>http协议运行在tcp之上，所有传输的内容都是明文，https运行在ssl/tls之上，而ssl/tls运行在tcp之上，所有的传输内容都经过加密的</li>
-<li>http与https使用完全不同的连接方式，用的端口也不一样，http是80，https是443</li>
-<li>https可以有效地防止运营商劫持（dns,ip路由,cdn,http,portal)</li>
-</ul>
-<h4 id="SPDY"><a href="#SPDY" class="headerlink" title="SPDY"></a>SPDY</h4><h3 id="http2-0"><a href="#http2-0" class="headerlink" title="http2.0"></a>http2.0</h3><ul>
-<li>解析速度快</li>
-<li>多路复用：多个请求同时共用一个tcp连接</li>
-<li>首部压缩</li>
-<li>优先级：http2.0可以对比较紧急的情况设置一个较高的优先级，服务器收到这样的请求后，可以优先处理</li>
-<li>流量控制</li>
-<li>服务器推送：除了对最初请求的响应外，服务器还可以额外向客户端推送资源，而无需客户端明确地请求。</li>
-</ul>
-<h3 id="使用服务端渲染"><a href="#使用服务端渲染" class="headerlink" title="使用服务端渲染"></a>使用服务端渲染</h3><p>服务端渲染是指服务端返回HTML文件，客户端只需解析HTML</p>
-<p>优点在于：首屏渲染快，SEO好</p>
-<p>缺点在于：配置复杂，增加服务器的计算压力</p>
-<h5 id="veu-ssr实践"><a href="#veu-ssr实践" class="headerlink" title="veu-ssr实践"></a><a target="_blank" rel="noopener" href="https://github.com/ajn404/vue-ssr.git">veu-ssr实践</a></h5>
           
         
       
@@ -564,7 +333,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/log.github.io/page/22/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/log.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/log.github.io/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/28/">28</a><a class="extend next" rel="next" href="/log.github.io/page/24/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/log.github.io/page/22/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/log.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/log.github.io/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/29/">29</a><a class="extend next" rel="next" href="/log.github.io/page/24/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -610,7 +379,7 @@
               
                 <a href="/log.github.io/archives">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
