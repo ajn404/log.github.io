@@ -2,9 +2,9 @@
 title: 前端
 ---
 
-## 性能优化
+# 性能优化	*[参考](https://segmentfault.com/a/1190000022205291)*
 
-###  减少http请求
+##  1.减少http请求
 
 **一个完整的http请求：域名解析，与服务器建立连接（三次握手），发起http请求，服务器相应http请求浏览器得到html代码，浏览器解析html并请求资源，浏览器进行页面的渲染，断开连接（四次挥手）**
 
@@ -106,7 +106,7 @@ title: 前端
 
 建议将多个小文件合并成为一个大文件，从而减小http请求的次数
 
-### 使用HTTP2
+## 2.使用HTTP2
 
 #### http1.0与http1.1的区别
 
@@ -134,7 +134,7 @@ title: 前端
 - 流量控制
 - 服务器推送：除了对最初请求的响应外，服务器还可以额外向客户端推送资源，而无需客户端明确地请求。
 
-### 使用服务端渲染
+## 3.使用服务端渲染
 
 服务端渲染是指服务端返回HTML文件，客户端只需解析HTML
 
@@ -142,5 +142,122 @@ title: 前端
 
 缺点在于：配置复杂，增加服务器的计算压力
 
-##### [veu-ssr实践](https://github.com/ajn404/vue-ssr.git)
+##### [veu-ssr实践（初识NUXTJS）](https://github.com/ajn404/vue-ssr.git)
 
+## 4.静态资源使用CDN
+
+CDN（内容分发网络）是一组分布在多个不同地理位置的Web服务器
+
+我们都知道，当服务器离用户越远时，延迟越高。CDN 就是为了解决这一问题，在多个位置部署服务器，让用户离服务器更近，从而缩短请求时间。
+
+用户访问的网站部署了 CDN，过程是这样的：
+
+1. 浏览器要将域名解析为 IP 地址，所以需要向本地 DNS 发出请求。
+2. 本地 DNS 依次向根服务器、顶级域名服务器、权限服务器发出请求，得到全局负载均衡系统（GSLB）的 IP 地址。
+3. 本地 DNS 再向 GSLB 发出请求，GSLB 的主要功能是根据本地 DNS 的 IP 地址判断用户的位置，筛选出距离用户较近的本地负载均衡系统（SLB），并将该 SLB 的 IP 地址作为结果返回给本地 DNS。
+4. 本地 DNS 将 SLB 的 IP 地址发回给浏览器，浏览器向 SLB 发出请求。
+5. SLB 根据浏览器请求的资源和地址，选出最优的缓存服务器发回给浏览器。
+6. 浏览器再根据 SLB 发回的地址重定向到缓存服务器。
+7. 如果缓存服务器有浏览器需要的资源，就将资源发回给浏览器。如果没有，就向源服务器请求资源，再发给浏览器并缓存在本地。
+
+**在我看来，CDN的本质是缓存，而内核中支撑它的互联网精神则是共享**
+
+#### 关于http缓存和浏览器缓存		*[参考](https://segmentfault.com/a/1190000021661656#:~:text=%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E5%88%86%E4%B8%BA,%E4%B9%8B%E9%97%B4%E5%AD%98%E5%9C%A8%E4%B8%80%E6%AC%A1%E9%80%9A%E4%BF%A1%E3%80%82)*
+
+- http缓存
+  - 缓存位置：Service Worker,Memory Cache,Disk Cache,Push Cache
+  - 用户行为影响：
+    - 地址栏输入：disk cache,没有匹配则发送网络请求
+    - 普通刷新：优先使用memory cache,其次是disk cache
+    - 强制刷新：浏览器不使用缓存
+- 浏览器缓存
+  - 强缓存
+  - 协商缓存
+  - 区别
+    - 如果浏览器命中强缓存，则不需要给服务器发送请求；协商缓存最终由服务器决定是否使用缓存，客户端与服务器之间存在一次通信
+    - 在 `chrome` 中强缓存（虽然没有发出真实的 `http` 请求）的请求状态码返回是 `200 (from cache)`；而协商缓存如果命中走缓存的话，请求的状态码是 `304 (not modified)`。 不同浏览器的策略不同，在 `Fire Fox`中，`from cache` 状态码是 304.
+
+## 5.将css放在文件头部，JavaScript放在底部
+
+## 6.使用字体图标iconfont代替图片图表
+
+## 7.webpack善用文件缓存，不重复加载相同的资源
+
+## 8.webpack插件压缩文件
+
+## 9.图片优化
+
+### 延迟加载（懒加载）
+
+首先将页面上的图片的 src 属性设为 loading.gif，而图片的真实路径则设置在 data-src 属性中，页面滚动的时候计算图片的位置与滚动的位置，当图片出现在浏览器视口内时，将图片的 src 属性设置为 data-src 的值，这样，就可以实现延迟加载。
+
+实例
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lazyload 1</title>
+    <style>
+        img {
+	    display: block;
+	    margin-bottom: 50px;
+	    height: 200px;
+	}
+    </style>
+</head>
+<body>
+    <img src="images/loading.gif" data-src="images/1.png">
+    <img src="images/loading.gif" data-src="images/2.png">
+    <img src="images/loading.gif" data-src="images/3.png">
+    <img src="images/loading.gif" data-src="images/4.png">
+    <img src="images/loading.gif" data-src="images/5.png">
+    <img src="images/loading.gif" data-src="images/6.png">
+    <img src="images/loading.gif" data-src="images/7.png">
+    <img src="images/loading.gif" data-src="images/8.png">
+    <img src="images/loading.gif" data-src="images/9.png">
+    <img src="images/loading.gif" data-src="images/10.png">
+    <img src="images/loading.gif" data-src="images/11.png">
+    <img src="images/loading.gif" data-src="images/12.png">
+    <script>
+        function lazyload() {
+	    var images = document.getElementsByTagName('img');
+	    var len    = images.length;
+	    var n      = 0;      //存储图片加载到的位置，避免每次都从第一张图片开始遍历		
+	    return function() {
+		var seeHeight = document.documentElement.clientHeight;
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		for(var i = n; i < len; i++) {
+		    if(images[i].offsetTop < seeHeight + scrollTop) {
+		        if(images[i].getAttribute('src') === 'images/loading.gif') {
+			     images[i].src = images[i].getAttribute('data-src');
+			}
+			n = n + 1;
+		     }
+		}
+	    }
+	}
+	var loadImages = lazyload();
+	loadImages();          //初始化首页的页面图片
+	window.addEventListener('scroll', loadImages, false);
+    </script>
+</body>
+</html>
+```
+
+### 响应式图片
+
+浏览器根据屏幕的大小自动加载合适的图片
+
+### 调整图片大小
+
+### 降低图片质量
+
+### 使用CSS３效果
+
+### 使用webp
+
+## 10.通过 webpack 按需加载代码，提取第三库代码，减少 ES6 转为 ES5 的冗余代码
+
+## 11.减少重绘重排
