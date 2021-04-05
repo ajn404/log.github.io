@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/log.github.io/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/log.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/log.github.io/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/log.github.io/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/log.github.io/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/log.github.io/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/log.github.io/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, 宁辉岳" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="性能优化    参考1.减少http请求一个完整的http请求：域名解析，与服务器建立连接（三次握手），发起http请求，服务器相应http请求浏览器得到html代码，浏览器解析html并请求资源，浏览器进行页面的渲染，断开连接（四次挥手）  域名解析 搜索浏览器自身的DNS缓存，搜索操作系统自身的DNS缓存，Windows系统尝试读取host文件，发起dns系统调用  与服务器建立连接 TCP三">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端">
+<meta property="og:url" content="https://ajn404.github.io/log.github.io/2021/04/05/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/js%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="此地无银三百两">
+<meta property="og:description" content="性能优化    参考1.减少http请求一个完整的http请求：域名解析，与服务器建立连接（三次握手），发起http请求，服务器相应http请求浏览器得到html代码，浏览器解析html并请求资源，浏览器进行页面的渲染，断开连接（四次挥手）  域名解析 搜索浏览器自身的DNS缓存，搜索操作系统自身的DNS缓存，Windows系统尝试读取host文件，发起dns系统调用  与服务器建立连接 TCP三">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-04-05T06:27:48.991Z">
+<meta property="article:modified_time" content="2021-04-05T06:27:48.991Z">
+<meta property="article:author" content="ajn404">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://ajn404.github.io/log.github.io/2021/04/05/JavaScript/面试准备第一期/性能优化/js内存优化/"/>
+
+
+
+
+
+  <title>前端 | 此地无银三百两</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/log.github.io/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">此地无银三百两</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/log.github.io/archives/" rel="section">
+            
+            首页
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/04/05/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/js%E5%86%85%E5%AD%98%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/log.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="此地无银三百两">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-05T06:27:48+00:00">
+                2021-04-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="性能优化-参考"><a href="#性能优化-参考" class="headerlink" title="性能优化    参考"></a>性能优化    <em><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000022205291">参考</a></em></h1><h2 id="1-减少http请求"><a href="#1-减少http请求" class="headerlink" title="1.减少http请求"></a>1.减少http请求</h2><p><strong>一个完整的http请求：域名解析，与服务器建立连接（三次握手），发起http请求，服务器相应http请求浏览器得到html代码，浏览器解析html并请求资源，浏览器进行页面的渲染，断开连接（四次挥手）</strong></p>
+<ol>
+<li><p>域名解析</p>
+<p>搜索浏览器自身的DNS缓存，搜索操作系统自身的DNS缓存，Windows系统尝试读取host文件，发起dns系统调用</p>
+</li>
+<li><p>与服务器建立连接</p>
+<p>TCP三次握手四次挥手</p>
+<p>TCP连接的基础：</p>
+<ul>
+<li>TCP连接的端点叫套接字或者插口，套接字定义为端口号拼接到ip地址</li>
+<li>每条TCP连接唯一地被通信两端的两个端点（即两个套接字）所确定</li>
+<li>同一个名词Socket可以表示多种不同的意思</li>
+<li>停止等待协议</li>
+<li>滑动窗口协议</li>
+<li>TCP拥塞控制：慢开始与拥塞避免，快重传与快恢复</li>
+<li>TCP的主要特点是：<ul>
+<li>面向连接</li>
+<li>每条TCP连接只能是点对点，一对一的</li>
+<li>提供可靠交付的服务</li>
+<li>提供全双工通信</li>
+<li>面向字节流</li>
+</ul>
+</li>
+<li>TCP连接建立，服务器确认客户的连接请求后，客户要对服务器的确认再进行确认</li>
+<li>TCP连接释放，任何一方都可以在数据传送结束后发出连接释放通知，待对方确认后进入半关闭状态，当另一方也没有数据再发送时，则发送连接释放通知，对方确认后关闭TCP连接</li>
+</ul>
+</li>
+<li><p>发起http请求</p>
+<p>8中请求方法：GET，POST，PUT，DELETE，PATCH，HEAD，OPTIONS，TRACE</p>
+<p>RESTful api常用GET POST DELETE　PUT</p>
+<p>默认端口号</p>
+</li>
+<li><p>服务器响应http请求，浏览器获得html代码</p>
+<p>服务器负载均衡：位于网站的最前端，把短时间较高的访问量分摊到不同机器上处理，方案分为硬件和软件</p>
+<p>状态码：</p>
+<table>
+<thead>
+<tr>
+<th>1**</th>
+<th>服务器收到请求，需要请求者继续执行操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>100</td>
+<td>continue：继续，客户端应继续其请求</td>
+</tr>
+<tr>
+<td>101</td>
+<td>Switching Protocols：切换协议，服务器根据客户端的请求切换协议，只能切换到更高级的协议</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>2**</strong></td>
+<td><strong>成功，操作被成功接收并处理</strong></td>
+</tr>
+<tr>
+<td>200</td>
+<td>OK：请求成功，一般用于GET或者POST请求</td>
+</tr>
+<tr>
+<td>201</td>
+<td>Created：成功请求并创建了新的资源</td>
+</tr>
+<tr>
+<td>202</td>
+<td>Accepted：已接收，已接收请求，但未处理完成</td>
+</tr>
+<tr>
+<td>203</td>
+<td>非授权信息</td>
+</tr>
+<tr>
+<td>204</td>
+<td>无内容</td>
+</tr>
+<tr>
+<td>205</td>
+<td>重置内容</td>
+</tr>
+<tr>
+<td><strong>3**</strong></td>
+<td><strong>重定向，需要进一步的操作以完成请求</strong></td>
+</tr>
+<tr>
+<td>300</td>
+<td>多种选择</td>
+</tr>
+<tr>
+<td>301</td>
+<td>永久移动</td>
+</tr>
+<tr>
+<td>302</td>
+<td>临时移动</td>
+</tr>
+<tr>
+<td>303</td>
+<td>查看其它地址</td>
+</tr>
+<tr>
+<td>304</td>
+<td>Not Modified：未修改：所请求的资源未修改，服务器返回此状态码时，不会返回任何资源，客户端通常会缓存所访问过的资源，通过提供一个头信息指出客户端希望只返回指定日期之后修改的资源<br>如果客户端返回一个带条件的GET请求且该请求已被允许，而文档的内容并没有改变，则服务器应当返回这个状态码。304响应禁止包含消息体，因此始终以消息头后的第一个空行结尾</td>
+</tr>
+<tr>
+<td>305</td>
+<td>Use Proxy:使用代理，所请求的资源必须通过代理访问</td>
+</tr>
+<tr>
+<td>306</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>307</td>
+<td>临时重定向</td>
+</tr>
+<tr>
+<td><strong>4**</strong></td>
+<td><strong>客户端错误，请求包含语法错误</strong></td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized，请求要求用户的身份认证</td>
+</tr>
+<tr>
+<td>402</td>
+<td></td>
+</tr>
+<tr>
+<td>403</td>
+<td>Forbidden：服务器理解请求客户端的请求，但是决绝执行此请求</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+</tr>
+<tr>
+<td>405</td>
+<td>请求中的方法被禁止</td>
+</tr>
+<tr>
+<td>406</td>
+<td>服务器无法根据请求的内容特性完成请求</td>
+</tr>
+<tr>
+<td>407</td>
+<td>请求要求代理的身份认证</td>
+</tr>
+<tr>
+<td>408</td>
+<td>服务器等待</td>
+</tr>
+<tr>
+<td>5**</td>
+<td></td>
+</tr>
+<tr>
+<td>500</td>
+<td>服务器遇到了一个未曾预料到的状况</td>
+</tr>
+<tr>
+<td>501</td>
+<td></td>
+</tr>
+<tr>
+<td>502</td>
+<td>作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应</td>
+</tr>
+<tr>
+<td>503</td>
+<td></td>
+</tr>
+<tr>
+<td>504</td>
+<td></td>
+</tr>
+<tr>
+<td>509</td>
+<td>服务器达到带宽限制</td>
+</tr>
+<tr>
+<td>510</td>
+<td>获取资源所需要的策略并没有被满足</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>一个http请求实例</p>
+
+
+</li>
+</ol>
+<p>其中：</p>
+<ul>
+<li>Queueing：在请求队列中的时间</li>
+<li>Stalled: 从TCP 连接建立完成，到真正可以传输数据之间的时间差，此时间包括代理协商时间。</li>
+<li>Proxy negotiation: 与代理服务器连接进行协商所花费的时间。</li>
+<li>DNS Lookup: 执行DNS查找所花费的时间，页面上的每个不同的域都需要进行DNS查找。</li>
+<li>Initial Connection / Connecting: 建立连接所花费的时间，包括TCP握手/重试和协商SSL。</li>
+<li>SSL: 完成SSL握手所花费的时间。</li>
+<li>Request sent: 发出网络请求所花费的时间，通常为一毫秒的时间。</li>
+<li>Waiting(TFFB): TFFB 是发出页面请求到接收到应答数据第一个字节的时间。</li>
+<li>Content Download: 接收响应数据所花费的时间。</li>
+</ul>
+<p>建议将多个小文件合并成为一个大文件，从而减小http请求的次数</p>
+<h2 id="2-使用HTTP2"><a href="#2-使用HTTP2" class="headerlink" title="2.使用HTTP2"></a>2.使用HTTP2</h2><h4 id="http1-0与http1-1的区别"><a href="#http1-0与http1-1的区别" class="headerlink" title="http1.0与http1.1的区别"></a>http1.0与http1.1的区别</h4><ul>
+<li>缓存处理：http1.1引入了更多的缓存控制策略</li>
+<li>带宽优化以及网络连接的使用，http1.1在请求头引入了range头域，它允许只请求资源的某个部分，即返回码206（Partial Content）</li>
+<li>错误通知管理：http1.1新增了24个错误状态响应码</li>
+<li>Host头处理：http1.1的请求消息和响应消息都支持Host头域，且请求消息中如果没有Host头域会报400</li>
+<li>长连接：HTTP 1.1支持长连接（PersistentConnection）和请求的流水线（Pipelining）处理，在一个TCP连接上可以传送多个HTTP请求和响应，减少了建立和关闭连接的消耗和延迟，在HTTP1.1中默认开启Connection： keep-alive，一定程度上弥补了HTTP1.0每次请求都要创建连接的缺点。</li>
+</ul>
+<h4 id="https与http"><a href="#https与http" class="headerlink" title="https与http"></a>https与http</h4><ul>
+<li>https需要到CA申请证书</li>
+<li>http协议运行在tcp之上，所有传输的内容都是明文，https运行在ssl/tls之上，而ssl/tls运行在tcp之上，所有的传输内容都经过加密的</li>
+<li>http与https使用完全不同的连接方式，用的端口也不一样，http是80，https是443</li>
+<li>https可以有效地防止运营商劫持（dns,ip路由,cdn,http,portal)</li>
+</ul>
+<h4 id="SPDY"><a href="#SPDY" class="headerlink" title="SPDY"></a>SPDY</h4><h3 id="http2-0"><a href="#http2-0" class="headerlink" title="http2.0"></a>http2.0</h3><ul>
+<li>解析速度快</li>
+<li>多路复用：多个请求同时共用一个tcp连接</li>
+<li>首部压缩</li>
+<li>优先级：http2.0可以对比较紧急的情况设置一个较高的优先级，服务器收到这样的请求后，可以优先处理</li>
+<li>流量控制</li>
+<li>服务器推送：除了对最初请求的响应外，服务器还可以额外向客户端推送资源，而无需客户端明确地请求。</li>
+</ul>
+<h2 id="3-使用服务端渲染"><a href="#3-使用服务端渲染" class="headerlink" title="3.使用服务端渲染"></a>3.使用服务端渲染</h2><p>服务端渲染是指服务端返回HTML文件，客户端只需解析HTML</p>
+<p>优点在于：首屏渲染快，SEO好</p>
+<p>缺点在于：配置复杂，增加服务器的计算压力</p>
+<h5 id="veu-ssr实践（初识NUXTJS）"><a href="#veu-ssr实践（初识NUXTJS）" class="headerlink" title="veu-ssr实践（初识NUXTJS）"></a><a target="_blank" rel="noopener" href="https://github.com/ajn404/vue-ssr.git">veu-ssr实践（初识NUXTJS）</a></h5><h2 id="4-静态资源使用CDN"><a href="#4-静态资源使用CDN" class="headerlink" title="4.静态资源使用CDN"></a>4.静态资源使用CDN</h2><p>CDN（内容分发网络）是一组分布在多个不同地理位置的Web服务器</p>
+<p>我们都知道，当服务器离用户越远时，延迟越高。CDN 就是为了解决这一问题，在多个位置部署服务器，让用户离服务器更近，从而缩短请求时间。</p>
+<p>用户访问的网站部署了 CDN，过程是这样的：</p>
+<ol>
+<li>浏览器要将域名解析为 IP 地址，所以需要向本地 DNS 发出请求。</li>
+<li>本地 DNS 依次向根服务器、顶级域名服务器、权限服务器发出请求，得到全局负载均衡系统（GSLB）的 IP 地址。</li>
+<li>本地 DNS 再向 GSLB 发出请求，GSLB 的主要功能是根据本地 DNS 的 IP 地址判断用户的位置，筛选出距离用户较近的本地负载均衡系统（SLB），并将该 SLB 的 IP 地址作为结果返回给本地 DNS。</li>
+<li>本地 DNS 将 SLB 的 IP 地址发回给浏览器，浏览器向 SLB 发出请求。</li>
+<li>SLB 根据浏览器请求的资源和地址，选出最优的缓存服务器发回给浏览器。</li>
+<li>浏览器再根据 SLB 发回的地址重定向到缓存服务器。</li>
+<li>如果缓存服务器有浏览器需要的资源，就将资源发回给浏览器。如果没有，就向源服务器请求资源，再发给浏览器并缓存在本地。</li>
+</ol>
+<p><strong>在我看来，CDN的本质是缓存，而内核中支撑它的互联网精神则是共享</strong></p>
+<h4 id="关于http缓存和浏览器缓存-参考"><a href="#关于http缓存和浏览器缓存-参考" class="headerlink" title="关于http缓存和浏览器缓存        参考"></a>关于http缓存和浏览器缓存        <em><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000021661656#:~:text=%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98%E5%88%86%E4%B8%BA,%E4%B9%8B%E9%97%B4%E5%AD%98%E5%9C%A8%E4%B8%80%E6%AC%A1%E9%80%9A%E4%BF%A1%E3%80%82">参考</a></em></h4><ul>
+<li>http缓存<ul>
+<li>缓存位置：Service Worker,Memory Cache,Disk Cache,Push Cache</li>
+<li>用户行为影响：<ul>
+<li>地址栏输入：disk cache,没有匹配则发送网络请求</li>
+<li>普通刷新：优先使用memory cache,其次是disk cache</li>
+<li>强制刷新：浏览器不使用缓存</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浏览器缓存<ul>
+<li>强缓存</li>
+<li>协商缓存</li>
+<li>区别<ul>
+<li>如果浏览器命中强缓存，则不需要给服务器发送请求；协商缓存最终由服务器决定是否使用缓存，客户端与服务器之间存在一次通信</li>
+<li>在 <code>chrome</code> 中强缓存（虽然没有发出真实的 <code>http</code> 请求）的请求状态码返回是 <code>200 (from cache)</code>；而协商缓存如果命中走缓存的话，请求的状态码是 <code>304 (not modified)</code>。 不同浏览器的策略不同，在 <code>Fire Fox</code>中，<code>from cache</code> 状态码是 304.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="5-将css放在文件头部，JavaScript放在底部"><a href="#5-将css放在文件头部，JavaScript放在底部" class="headerlink" title="5.将css放在文件头部，JavaScript放在底部"></a>5.将css放在文件头部，JavaScript放在底部</h2><h2 id="6-使用字体图标iconfont代替图片图表"><a href="#6-使用字体图标iconfont代替图片图表" class="headerlink" title="6.使用字体图标iconfont代替图片图表"></a>6.使用字体图标iconfont代替图片图表</h2><h2 id="7-webpack善用文件缓存，不重复加载相同的资源"><a href="#7-webpack善用文件缓存，不重复加载相同的资源" class="headerlink" title="7.webpack善用文件缓存，不重复加载相同的资源"></a>7.webpack善用文件缓存，不重复加载相同的资源</h2><h2 id="8-webpack插件压缩文件"><a href="#8-webpack插件压缩文件" class="headerlink" title="8.webpack插件压缩文件"></a>8.webpack插件压缩文件</h2><h2 id="9-图片优化"><a href="#9-图片优化" class="headerlink" title="9.图片优化"></a>9.图片优化</h2><h3 id="延迟加载（懒加载）"><a href="#延迟加载（懒加载）" class="headerlink" title="延迟加载（懒加载）"></a>延迟加载（懒加载）</h3><p>首先将页面上的图片的 src 属性设为 loading.gif，而图片的真实路径则设置在 data-src 属性中，页面滚动的时候计算图片的位置与滚动的位置，当图片出现在浏览器视口内时，将图片的 src 属性设置为 data-src 的值，这样，就可以实现延迟加载。</p>
+<p>实例</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Lazyload 1<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">        <span class="selector-tag">img</span> &#123;</span></span><br><span class="line"><span class="css">	    <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="css">	    <span class="attribute">margin-bottom</span>: <span class="number">50px</span>;</span></span><br><span class="line"><span class="css">	    <span class="attribute">height</span>: <span class="number">200px</span>;</span></span><br><span class="line">	&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/1.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/2.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/3.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/4.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/5.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/6.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/7.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/8.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/9.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/10.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/11.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;images/loading.gif&quot;</span> <span class="attr">data-src</span>=<span class="string">&quot;images/12.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">        <span class="function"><span class="keyword">function</span> <span class="title">lazyload</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">	    <span class="keyword">var</span> images = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&#x27;img&#x27;</span>);</span></span><br><span class="line"><span class="javascript">	    <span class="keyword">var</span> len    = images.length;</span></span><br><span class="line"><span class="javascript">	    <span class="keyword">var</span> n      = <span class="number">0</span>;      <span class="comment">//存储图片加载到的位置，避免每次都从第一张图片开始遍历		</span></span></span><br><span class="line"><span class="javascript">	    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> seeHeight = <span class="built_in">document</span>.documentElement.clientHeight;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">var</span> scrollTop = <span class="built_in">document</span>.documentElement.scrollTop || <span class="built_in">document</span>.body.scrollTop;</span></span><br><span class="line"><span class="javascript">		<span class="keyword">for</span>(<span class="keyword">var</span> i = n; i &lt; len; i++) &#123;</span></span><br><span class="line">		    if(images[i].offsetTop &lt; seeHeight + scrollTop) &#123;</span><br><span class="line"><span class="javascript">		        <span class="keyword">if</span>(images[i].getAttribute(<span class="string">&#x27;src&#x27;</span>) === <span class="string">&#x27;images/loading.gif&#x27;</span>) &#123;</span></span><br><span class="line"><span class="javascript">			     images[i].src = images[i].getAttribute(<span class="string">&#x27;data-src&#x27;</span>);</span></span><br><span class="line">			&#125;</span><br><span class="line">			n = n + 1;</span><br><span class="line">		     &#125;</span><br><span class="line">		&#125;</span><br><span class="line">	    &#125;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="javascript">	<span class="keyword">var</span> loadImages = lazyload();</span></span><br><span class="line"><span class="javascript">	loadImages();          <span class="comment">//初始化首页的页面图片</span></span></span><br><span class="line"><span class="javascript">	<span class="built_in">window</span>.addEventListener(<span class="string">&#x27;scroll&#x27;</span>, loadImages, <span class="literal">false</span>);</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="响应式图片"><a href="#响应式图片" class="headerlink" title="响应式图片"></a>响应式图片</h3><p>浏览器根据屏幕的大小自动加载合适的图片</p>
+<h3 id="调整图片大小"><a href="#调整图片大小" class="headerlink" title="调整图片大小"></a>调整图片大小</h3><h3 id="降低图片质量"><a href="#降低图片质量" class="headerlink" title="降低图片质量"></a>降低图片质量</h3><h3 id="使用CSS３效果"><a href="#使用CSS３效果" class="headerlink" title="使用CSS３效果"></a>使用CSS３效果</h3><h3 id="使用webp"><a href="#使用webp" class="headerlink" title="使用webp"></a>使用webp</h3><h2 id="10-通过-webpack-按需加载代码，提取第三库代码，减少-ES6-转为-ES5-的冗余代码"><a href="#10-通过-webpack-按需加载代码，提取第三库代码，减少-ES6-转为-ES5-的冗余代码" class="headerlink" title="10.通过 webpack 按需加载代码，提取第三库代码，减少 ES6 转为 ES5 的冗余代码"></a>10.通过 webpack 按需加载代码，提取第三库代码，减少 ES6 转为 ES5 的冗余代码</h2><h2 id="11-减少重绘重排"><a href="#11-减少重绘重排" class="headerlink" title="11.减少重绘重排"></a>11.减少重绘重排</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/log.github.io/2021/04/05/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%BA%8C%E6%9C%9F/%E4%BA%8C%E5%8F%89%E6%A0%91/%E5%9F%BA%E7%A1%80/" rel="next" title="二叉树">
+                <i class="fa fa-chevron-left"></i> 二叉树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/log.github.io/2021/04/05/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%B8%80%E6%9C%9F/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%AE%97%E6%B3%95/" rel="prev" title="常见算法">
+                常见算法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/log.github.io/archives">
+              
+                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/log.github.io/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/ajn404" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96-%E5%8F%82%E8%80%83"><span class="nav-number">1.</span> <span class="nav-text">性能优化    参考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%87%8F%E5%B0%91http%E8%AF%B7%E6%B1%82"><span class="nav-number">1.1.</span> <span class="nav-text">1.减少http请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E4%BD%BF%E7%94%A8HTTP2"><span class="nav-number">1.2.</span> <span class="nav-text">2.使用HTTP2</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#http1-0%E4%B8%8Ehttp1-1%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">http1.0与http1.1的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#https%E4%B8%8Ehttp"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">https与http</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SPDY"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">SPDY</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http2-0"><span class="nav-number">1.2.1.</span> <span class="nav-text">http2.0</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E4%BD%BF%E7%94%A8%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B8%B2%E6%9F%93"><span class="nav-number">1.3.</span> <span class="nav-text">3.使用服务端渲染</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#veu-ssr%E5%AE%9E%E8%B7%B5%EF%BC%88%E5%88%9D%E8%AF%86NUXTJS%EF%BC%89"><span class="nav-number">1.3.0.0.1.</span> <span class="nav-text">veu-ssr实践（初识NUXTJS）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E4%BD%BF%E7%94%A8CDN"><span class="nav-number">1.4.</span> <span class="nav-text">4.静态资源使用CDN</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Ehttp%E7%BC%93%E5%AD%98%E5%92%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98-%E5%8F%82%E8%80%83"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">关于http缓存和浏览器缓存        参考</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%B0%86css%E6%94%BE%E5%9C%A8%E6%96%87%E4%BB%B6%E5%A4%B4%E9%83%A8%EF%BC%8CJavaScript%E6%94%BE%E5%9C%A8%E5%BA%95%E9%83%A8"><span class="nav-number">1.5.</span> <span class="nav-text">5.将css放在文件头部，JavaScript放在底部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E4%BD%BF%E7%94%A8%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87iconfont%E4%BB%A3%E6%9B%BF%E5%9B%BE%E7%89%87%E5%9B%BE%E8%A1%A8"><span class="nav-number">1.6.</span> <span class="nav-text">6.使用字体图标iconfont代替图片图表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-webpack%E5%96%84%E7%94%A8%E6%96%87%E4%BB%B6%E7%BC%93%E5%AD%98%EF%BC%8C%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%8A%A0%E8%BD%BD%E7%9B%B8%E5%90%8C%E7%9A%84%E8%B5%84%E6%BA%90"><span class="nav-number">1.7.</span> <span class="nav-text">7.webpack善用文件缓存，不重复加载相同的资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-webpack%E6%8F%92%E4%BB%B6%E5%8E%8B%E7%BC%A9%E6%96%87%E4%BB%B6"><span class="nav-number">1.8.</span> <span class="nav-text">8.webpack插件压缩文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E5%9B%BE%E7%89%87%E4%BC%98%E5%8C%96"><span class="nav-number">1.9.</span> <span class="nav-text">9.图片优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BB%B6%E8%BF%9F%E5%8A%A0%E8%BD%BD%EF%BC%88%E6%87%92%E5%8A%A0%E8%BD%BD%EF%BC%89"><span class="nav-number">1.9.1.</span> <span class="nav-text">延迟加载（懒加载）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94%E5%BC%8F%E5%9B%BE%E7%89%87"><span class="nav-number">1.9.2.</span> <span class="nav-text">响应式图片</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B0%83%E6%95%B4%E5%9B%BE%E7%89%87%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.9.3.</span> <span class="nav-text">调整图片大小</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%8D%E4%BD%8E%E5%9B%BE%E7%89%87%E8%B4%A8%E9%87%8F"><span class="nav-number">1.9.4.</span> <span class="nav-text">降低图片质量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8CSS%EF%BC%93%E6%95%88%E6%9E%9C"><span class="nav-number">1.9.5.</span> <span class="nav-text">使用CSS３效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8webp"><span class="nav-number">1.9.6.</span> <span class="nav-text">使用webp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E9%80%9A%E8%BF%87-webpack-%E6%8C%89%E9%9C%80%E5%8A%A0%E8%BD%BD%E4%BB%A3%E7%A0%81%EF%BC%8C%E6%8F%90%E5%8F%96%E7%AC%AC%E4%B8%89%E5%BA%93%E4%BB%A3%E7%A0%81%EF%BC%8C%E5%87%8F%E5%B0%91-ES6-%E8%BD%AC%E4%B8%BA-ES5-%E7%9A%84%E5%86%97%E4%BD%99%E4%BB%A3%E7%A0%81"><span class="nav-number">1.10.</span> <span class="nav-text">10.通过 webpack 按需加载代码，提取第三库代码，减少 ES6 转为 ES5 的冗余代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-%E5%87%8F%E5%B0%91%E9%87%8D%E7%BB%98%E9%87%8D%E6%8E%92"><span class="nav-number">1.11.</span> <span class="nav-text">11.减少重绘重排</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ajn404</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/log.github.io/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/log.github.io/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/log.github.io/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/log.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/log.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/log.github.io/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/log.github.io/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/log.github.io/lib/three/canvas_lines.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/log.github.io/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/log.github.io/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/log.github.io/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/log.github.io/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/log.github.io/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/log.github.io/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/log.github.io/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
