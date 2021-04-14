@@ -217,7 +217,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/04/05/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%BA%8C%E6%9C%9F/%E4%BA%8C%E5%8F%89%E6%A0%91/%E5%9F%BA%E7%A1%80/">
+    <link itemprop="mainEntityOfPage" href="https://ajn404.github.io/log.github.io/log.github.io/2021/04/14/JavaScript/leetcode%E7%AC%AC%E4%BA%8C%E6%9C%9F%EF%BC%88202104%EF%BC%89/js%E5%9B%9E%E6%BA%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -236,7 +236,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/log.github.io/2021/04/05/JavaScript/%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E7%AC%AC%E4%BA%8C%E6%9C%9F/%E4%BA%8C%E5%8F%89%E6%A0%91/%E5%9F%BA%E7%A1%80/" itemprop="url">二叉树</a></h1>
+                <a class="post-title-link" href="/log.github.io/2021/04/14/JavaScript/leetcode%E7%AC%AC%E4%BA%8C%E6%9C%9F%EF%BC%88202104%EF%BC%89/js%E5%9B%9E%E6%BA%AF/" itemprop="url">js回溯</a></h1>
         
 
         <div class="post-meta">
@@ -248,8 +248,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-05T13:25:12+00:00">
-                2021-04-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-14T03:14:39+00:00">
+                2021-04-14
               </time>
             
 
@@ -288,17 +288,7 @@
       
         
           
-            <h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><h3 id="前序遍历"><a href="#前序遍历" class="headerlink" title="前序遍历"></a>前序遍历</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="function"><span class="title">preorderTraversal</span>(<span class="params">root</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res=[];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_preorder</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!node)<span class="keyword">return</span> ;</span><br><span class="line">       	res.push(node.val);</span><br><span class="line">        _preorder(node.left);</span><br><span class="line">        _preorder(node.right);</span><br><span class="line">    &#125;</span><br><span class="line">    _preorder(root);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="中序遍历"><a href="#中序遍历" class="headerlink" title="中序遍历"></a>中序遍历</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="function"><span class="title">preorderTraversal</span>(<span class="params">root</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res=[];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_preorder</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!node)<span class="keyword">return</span> ;</span><br><span class="line">        _preorder(node.left);                                                                                                           res.push(node.val);</span><br><span class="line">        _preorder(node.right);</span><br><span class="line">    &#125;</span><br><span class="line">    _preorder(root);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="后序遍历"><a href="#后序遍历" class="headerlink" title="后序遍历"></a>后序遍历</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> <span class="function"><span class="title">preorderTraversal</span>(<span class="params">root</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res=[];</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">_preorder</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!node)<span class="keyword">return</span> ;</span><br><span class="line">        _preorder(node.right);</span><br><span class="line">        _preorder(node.left);                                                                                                           res.push(node.val);</span><br><span class="line">    &#125;</span><br><span class="line">    _preorder(root);</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><h3 id="前序遍历-1"><a href="#前序遍历-1" class="headerlink" title="前序遍历"></a>前序遍历</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> preorderTraversal=<span class="function"><span class="keyword">function</span> (<span class="params">root</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!root) <span class="keyword">return</span> ;</span><br><span class="line">    <span class="keyword">const</span> stack=[root];</span><br><span class="line">    <span class="keyword">const</span> res=[];</span><br><span class="line">    <span class="keyword">while</span>(stack.length)&#123;</span><br><span class="line">        <span class="keyword">const</span> cur =stack.pop();</span><br><span class="line">        res.push(cur.val);        </span><br><span class="line">        cur.right&amp;&amp;stack.push(cur.right)</span><br><span class="line">        cur.left&amp;&amp;stack.push(cur.left)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="中序遍历-1"><a href="#中序遍历-1" class="headerlink" title="中序遍历"></a>中序遍历</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> inorderTraversal=<span class="function"><span class="keyword">function</span>(<span class="params">root</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(!root) <span class="keyword">return</span> ;</span><br><span class="line">    <span class="keyword">const</span> stack=[];</span><br><span class="line">    <span class="keyword">let</span> cur=root;</span><br><span class="line">    <span class="keyword">const</span> res=[];</span><br><span class="line">    <span class="keyword">while</span>(stack.length||cur)&#123;                                                                                                   		<span class="comment">//左节点先压入栈</span></span><br><span class="line">        <span class="keyword">while</span>(cur)&#123;</span><br><span class="line">            stack.push(cur);</span><br><span class="line">            cur=cur.left;</span><br><span class="line">        &#125;        </span><br><span class="line">        <span class="keyword">const</span> node=stack.pop();</span><br><span class="line">        res.push(node.val);</span><br><span class="line">        <span class="keyword">if</span>(node.right!=<span class="literal">null</span>)&#123;</span><br><span class="line">            cur=node.right;</span><br><span class="line">        &#125;        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+            <h3 id="js回溯"><a href="#js回溯" class="headerlink" title="js回溯"></a>js回溯</h3>
           
         
       
@@ -337,7 +327,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/log.github.io/page/23/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/log.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/log.github.io/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/31/">31</a><a class="extend next" rel="next" href="/log.github.io/page/25/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/log.github.io/page/23/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/log.github.io/">1</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/23/">23</a><span class="page-number current">24</span><a class="page-number" href="/log.github.io/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/log.github.io/page/32/">32</a><a class="extend next" rel="next" href="/log.github.io/page/25/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -383,7 +373,7 @@
               
                 <a href="/log.github.io/archives">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">32</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -396,7 +386,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/log.github.io/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
